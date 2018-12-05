@@ -46,7 +46,7 @@ Look for this:
 
 ### Create the `DestinationRule`
 
-6. Add the host info for cluster B to the `destinationrule.yaml` so that cluster A knows where to send traffic.
+6. Add the host info for cluster B to `destinationrule.yaml` so that cluster A knows where to send traffic.
 7. Apply the rule to Cluster A, `kubectl apply -f destinationrule.yaml`
 
 ### Route traffic to Cluster B
@@ -56,10 +56,10 @@ Look for this:
 ```
   http:
   - rewrite:
-      authority: reviews.default.svc.netpgcxz4x.remote
+      authority: reviews.default.**svc.netpgcxz4x.remote**
     route:
     - destination:
-        host: svc.netpgcxz4x.remote
+        host: **svc.netpgcxz4x.remote**
 ```
 
 9. Save your changes. 
@@ -74,7 +74,7 @@ Look for this:
 
 ## See the Cross-Cluster Action
 
-1. On the detail page, scroll down to the Solutions section.  
+1. On the detail page for Cluster A, scroll down to the Solutions section.  
 2. Select the Istio ingress URL 
 3. Appended `/productpage` to the link, e.g. http://35.227.159.142/productpage
 4. Refresh the page. 
@@ -84,5 +84,5 @@ Look for this:
 You should see both "no stars" and "red stars" reviews. This indicates that traffic is being split between the clusters!
 
 # Props
-Special thanks to @justinhopper and @erikabarcott for their help on this demo!
+Special thanks to @justinhopper and @ebarcott for their help on this demo!
 
